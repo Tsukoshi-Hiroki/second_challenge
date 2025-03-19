@@ -1,0 +1,8 @@
+<launch>
+    <!-- param -->
+    <arg name="goal_dist" default="1.0"/>
+    <arg name="velocity" default="0.1"/>
+
+    <!-- node -->
+    <node pkg="second_challenge" exec="second_challenge_node" name="second_challenge_node"/>
+</launch>

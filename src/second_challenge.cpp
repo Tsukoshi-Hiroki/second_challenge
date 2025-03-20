@@ -43,13 +43,23 @@ void SecondChallenge::scan_callback(const sensor_msgs::msg::LaserScan::SharedPtr
 double SecondChallenge::calc_min_dist()
 {
   double all_angle = scan_.value().angle_max - scan_.value().angle_min;
-  double min_range = scan_.value().range_min;
+  double min_range ;
 
   RCLCPP_INFO(this->get_logger(), "angle_min = %lf",scan_.value().angle_min);
   RCLCPP_INFO(this->get_logger(), "angle_max = %lf",scan_.value().angle_max);
   RCLCPP_INFO(this->get_logger(), "all_angle = %lf",all_angle);
   RCLCPP_INFO(this->get_logger(), "angle_increment = %lf",scan_.value().angle_increment);
-  RCLCPP_INFO(this->get_logger(), "range_min = %lf",scan_.value().range_min);
+  RCLCPP_INFO(this->get_logger(), "range_number = %ld",size(scan_.value().ranges));
+
+  int j=0;
+  for(int i=421; i<=541; i++)
+  {
+    range_array[j] = scan_.value().ranges[i];
+    j++;
+  }
+
+  min_range = *min_element(begin(range_array), end(range_array));
+  RCLCPP_INFO(this->get_logger(), "min_range = %lf",min_range);
 
   return min_range;
 }

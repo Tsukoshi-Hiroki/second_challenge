@@ -35,6 +35,7 @@ private:
   double goal_dist = 1.0;
   double velocity = 0.0;
   double omega = 0.0;
+  std::vector<double> range_array;
 };
 
 #endif  // SECOND_CHALLENGE_HPP

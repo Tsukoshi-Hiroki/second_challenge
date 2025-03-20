@@ -49,12 +49,13 @@ double SecondChallenge::calc_min_dist()
   RCLCPP_INFO(this->get_logger(), "angle_max = %lf",scan_.value().angle_max);
   RCLCPP_INFO(this->get_logger(), "all_angle = %lf",all_angle);
   RCLCPP_INFO(this->get_logger(), "angle_increment = %lf",scan_.value().angle_increment);
-  RCLCPP_INFO(this->get_logger(), "range_number = %ld",size(scan_.value().ranges));
+  RCLCPP_INFO(this->get_logger(), "range_num = %ld",size(scan_.value().ranges));
 
   int j=0;
   for(int i=421; i<=541; i++)
   {
-    range_array[j] = scan_.value().ranges[i];
+    range_array.push_back(scan_.value().ranges[i]);
+    RCLCPP_INFO(this->get_logger(), "range_array[%d] = %lf",i,range_array[j]);
     j++;
   }
 
